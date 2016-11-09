@@ -13,7 +13,9 @@ path:
   plugins: /elasticsearch/plugins
   work: /data/work
 
-bootstrap.mlockall: true
+bootstrap:
+  memory_lock: true
+  ignore_system_bootstrap_checks: true
 
 http:
   enabled: ${HTTP_ENABLE}
@@ -31,6 +33,4 @@ discovery:
   zen:
     minimum_master_nodes: ${NUMBER_OF_MASTERS}
 
-index:
-    number_of_shards: ${NUMBER_OF_SHARDS}
-    number_of_replicas: ${NUMBER_OF_REPLICAS}
+plugin.mandatory: discovery-kubernetes
