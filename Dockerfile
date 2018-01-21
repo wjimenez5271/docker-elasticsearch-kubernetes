@@ -20,6 +20,9 @@ RUN ./bin/elasticsearch-plugin install -b com.floragunn:search-guard-ssl:6.1.3-2
 # Install s3 repository plugin
 RUN ./bin/elasticsearch-plugin install repository-s3
 
+# Install gcs repostory plugin
+RUN ./bin/elasticsearch-plugin install repository-gcs
+
 # Install statsd plugin
 RUN ./bin/elasticsearch-plugin install https://github.com/Automattic/elasticsearch-statsd-plugin/releases/download/6.1.3.0/elasticsearch-statsd-6.1.3.0.zip
 
