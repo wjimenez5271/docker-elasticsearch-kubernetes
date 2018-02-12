@@ -1,4 +1,4 @@
-FROM quay.io/pires/docker-elasticsearch:5.6.4
+FROM quay.io/pires/docker-elasticsearch:6.1.3
 
 MAINTAINER pjpires@gmail.com
 
@@ -14,14 +14,14 @@ ENV SEARCHGUARD_SSL_HTTP_ENABLED=true
 # Fix bug installing plugins
 ENV NODE_NAME=""
 
-# Install mapper-attachments (https://www.elastic.co/guide/en/elasticsearch/plugins/5.x/mapper-attachments.html)
-RUN ./bin/elasticsearch-plugin install mapper-attachments
-
 # Install search-guard-ssl
-RUN ./bin/elasticsearch-plugin install -b com.floragunn:search-guard-ssl:5.6.4-23
+RUN ./bin/elasticsearch-plugin install -b com.floragunn:search-guard-ssl:6.1.3-25.1
 
 # Install s3 repository plugin
 RUN ./bin/elasticsearch-plugin install repository-s3
 
 # Install statsd plugin
-RUN ./bin/elasticsearch-plugin install https://github.com/Automattic/elasticsearch-statsd-plugin/releases/download/5.6.4.0/elasticsearch-statsd-5.6.4.0.zip
+RUN ./bin/elasticsearch-plugin install https://github.com/Automattic/elasticsearch-statsd-plugin/releases/download/6.1.3.0/elasticsearch-statsd-6.1.3.0.zip
+
+# Install prometheus plugin
+RUN ./bin/elasticsearch-plugin install https://github.com/vvanholl/elasticsearch-prometheus-exporter/releases/download/6.1.3.0/elasticsearch-prometheus-exporter-6.1.3.0.zip
